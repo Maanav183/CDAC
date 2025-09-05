@@ -293,6 +293,26 @@ FROM Employees e
 JOIN Departments d ON e.dept_id = d.dept_id;
 
 
+SELECT e.emp_id, e.emp_name, d.dept_name
+FROM Employees e
+LEFT JOIN Departments d ON e.dept_id = d.dept_id;
+
+SELECT d.dept_id, d.dept_name, e.emp_id, e.emp_name
+FROM Departments d
+LEFT JOIN Employees e ON d.dept_id = e.dept_id;
+
+SELECT e.emp_id, e.emp_name
+FROM Employees e
+LEFT JOIN Departments d ON e.dept_id = d.dept_id
+WHERE d.dept_id IS NULL;
+
+SELECT d.dept_id, d.dept_name
+FROM Departments d
+LEFT JOIN Employees e ON d.dept_id = e.dept_id
+WHERE e.emp_id IS NULL;
+
+
+
 
 
 
