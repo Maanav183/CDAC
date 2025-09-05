@@ -1,0 +1,300 @@
+-- task1
+CREATE DATABASE manavdb; 
+
+USE manavdb;
+
+-- task2
+CREATE TABLE friendlist (
+id INT PRIMARY KEY NOT NULL,
+name VARCHAR (100) NOT NULL,
+contact VARCHAR(20),
+address VARCHAR(100));
+
+DESC friendlist;
+
+INSERT INTO friendlist (id, name, contact, address) VALUES
+(1, 'Aarav Mehta', 9876543210, 'Mumbai'),
+(2, 'Priya Sharma', 9123456780, 'Delhi'),
+(3, 'Rohan Kapoor', 9988776655, 'Bengaluru'),
+(4, 'Sneha Iyer', 9090909090, 'Chennai'),
+(5, 'Aditya Deshmukh', 9812345678, 'Pune'),
+(6, 'Kavya Nair', 9765432109, 'Kochi'),
+(7, 'Vikram Joshi', 9345678901, 'Hyderabad');
+
+SELECT * FROM friendlist;
+
+-- task 3
+CREATE TABLE employee (
+id INT PRIMARY KEY NOT NULL,
+name VARCHAR(100) NOT NULL,
+post VARCHAR(50),
+gender VARCHAR(10),
+salary INT,
+state VARCHAR(50),
+district VARCHAR(50),
+age INT,
+email VARCHAR(100)
+);
+
+DESC employee;
+
+INSERT INTO employee (id, name, post, gender, salary, state, district, age, email) VALUES
+(1, 'Aarav Mehta', 'Manager', 'Male', 75000, 'Maharashtra', 'Mumbai', 35, 'aarav.mehta@example.com'),
+(2, 'Priya Sharma', 'Developer', 'Female', 60000, 'Delhi', 'New Delhi', 28, 'priya.sharma@example.com'),
+(3, 'Rohan Kapoor', 'Analyst', 'Male', 50000, 'Karnataka', 'Bengaluru', 30, 'rohan.kapoor@example.com'),
+(4, 'Sneha Iyer', 'HR', 'Female', 45000, 'Tamil Nadu', 'Chennai', 27, 'sneha.iyer@example.com'),
+(5, 'Aditya Deshmukh', 'Team Lead', 'Male', 70000, 'Maharashtra', 'Pune', 32, 'aditya.deshmukh@example.com'),
+(6, 'Kavya Nair', 'Designer', 'Female', 55000, 'Kerala', 'Kochi', 26, 'kavya.nair@example.com'),
+(7, 'Vikram Joshi', 'Tester', 'Male', 48000, 'Telangana', 'Hyderabad', 29, 'vikram.joshi@example.com'),
+(8, 'Meera Singh', 'Intern', 'Female', 20000, 'Uttar Pradesh', 'Lucknow', 22, 'meera.singh@example.com'),
+(9, 'Arjun Verma', 'Consultant', 'Male', 65000, 'Rajasthan', 'Jaipur', 34, 'arjun.verma@example.com'),
+(10, 'Neha Gupta', 'Developer', 'Female', 62000, 'West Bengal', 'Kolkata', 28, 'neha.gupta@example.com');
+
+SELECT * FROM employee;
+
+UPDATE Employee SET post = 'software developer' WHERE post = 'developer' AND id > 0;
+
+DROP TABLE employee;
+
+-- task 4
+CREATE TABLE productdetails (
+id INT PRIMARY KEY NOT NULL,
+productId VARCHAR(20) NOT NULL,
+pname VARCHAR(100) NOT NULL,
+pprice DECIMAL(10,2)NOT NULL,
+pcompny VARCHAR(100) NOT NULL,
+pquantity INT NOT NULL,
+available VARCHAR(10) NOT NULL
+);
+
+DESC productdetails;
+
+INSERT INTO productdetails (id, productId, pname, pprice, pcompny, pquantity, available) VALUES
+(1, 'P1001', 'Laptop', 55000.00, 'Dell', 20, 'Yes'),
+(2, 'P1002', 'Smartphone', 25000.00, 'Samsung', 50, 'Yes'),
+(3, 'P1003', 'Headphones', 2000.00, 'Sony', 100, 'Yes'),
+(4, 'P1004', 'Smartwatch', 12000.00, 'Apple', 15, 'Yes'),
+(5, 'P1005', 'Keyboard', 1500.00, 'Logitech', 60, 'Yes'),
+(6, 'P1006', 'Mouse', 800.00, 'HP', 70, 'Yes'),
+(7, 'P1007', 'Printer', 8500.00, 'Canon', 10, 'Yes'),
+(8, 'P1008', 'Tablet', 30000.00, 'Lenovo', 25, 'Yes'),
+(9, 'P1009', 'Camera', 40000.00, 'Nikon', 12, 'Yes'),
+(10, 'P1010', 'Monitor', 12000.00, 'Acer', 18, 'Yes');
+
+ALTER TABLE productdetails ADD COLUMN city VARCHAR(50); 
+ALTER TABLE productdetails ADD COLUMN pincode INT ;
+
+UPDATE productdetails SET city = 'Mumbai', pincode = '400001' WHERE id = 1;
+UPDATE productdetails SET city = 'Delhi', pincode = '110001' WHERE id = 2;
+UPDATE productdetails SET city = 'Bengaluru', pincode = '560001' WHERE id = 3;
+UPDATE productdetails SET city = 'Chennai', pincode = '600001' WHERE id = 4;
+UPDATE productdetails SET city = 'Pune', pincode = '411001' WHERE id = 5;
+UPDATE productdetails SET city = 'Hyderabad', pincode = '500001' WHERE id = 6;
+UPDATE productdetails SET city = 'Kolkata', pincode = '700001' WHERE id = 7;
+UPDATE productdetails SET city = 'Jaipur', pincode = '302001' WHERE id = 8;
+UPDATE productdetails SET city = 'Lucknow', pincode = '226001' WHERE id = 9;
+UPDATE productdetails SET city = 'Ahmedabad', pincode = '380001' WHERE id = 10;	
+
+UPDATE productdetails SET available = 'no' WHERE id = 3;
+
+SELECT * FROM productdetails WHERE available = 'no';
+
+UPDATE productdetails SET pcompny = 'samsung' WHERE pcompny = 'acer' AND id > 0;
+
+SELECT * FROM productdetails WHERE pcompny = 'samsung';
+
+SELECT * FROM productdetails;
+
+TRUNCATE TABLE productdetails;
+
+DROP TABLE productdetails;
+
+-- task 6
+SELECT salary AS emp_salary FROM employee;
+
+-- task 7
+CREATE DATABASE projectdb;
+
+CREATE TABLE Company (
+company_id INT PRIMARY KEY,
+company_name VARCHAR(100) NOT NULL,
+industry VARCHAR(50) NOT NULL,
+city VARCHAR(50),
+employees INT
+);
+
+INSERT INTO Company VALUES
+(1, 'TechSoft Pvt Ltd', 'IT', 'Bengaluru', 500),
+(2, 'GreenBuild Constructions', 'Construction', 'Mumbai', 200),
+(3, 'MediCare Solutions', 'Healthcare', 'Delhi', 300);
+
+CREATE TABLE Bank (
+bank_id INT PRIMARY KEY,
+bank_name VARCHAR(100) NOT NULL,
+branch VARCHAR(50),
+ifsc_code VARCHAR(20) UNIQUE NOT NULL,
+city VARCHAR(50) NOT NULL
+);
+
+INSERT INTO Bank VALUES
+(1, 'State Bank of India', 'Main Branch', 'SBIN0001234', 'Mumbai'),
+(2, 'HDFC Bank', 'MG Road', 'HDFC0005678', 'Bengaluru'),
+(3, 'ICICI Bank', 'Connaught Place', 'ICIC0004321', 'Delhi');
+
+CREATE TABLE Hospital (
+hospital_id INT PRIMARY KEY,
+hospital_name VARCHAR(100) NOT NULL,
+specialization VARCHAR(50),
+city VARCHAR(50),
+capacity INT
+);
+
+INSERT INTO Hospital VALUES
+(1, 'Apollo Hospital', 'Multi-speciality', 'Chennai', 500),
+(2, 'Fortis Healthcare', 'Cardiology', 'Delhi', 300),
+(3, 'KIMS Hospital', 'Orthopedics', 'Hyderabad', 250);
+
+CREATE TABLE Hotel (
+hotel_id INT PRIMARY KEY,
+hotel_name VARCHAR(100) NOT NULL,
+rating DECIMAL(2,1),
+city VARCHAR(50),
+rooms INT
+);
+
+INSERT INTO Hotel VALUES
+(1, 'The Oberoi', 5.0, 'Mumbai', 250),
+(2, 'Taj Palace', 4.8, 'Delhi', 300),
+(3, 'ITC Gardenia', 4.5, 'Bengaluru', 200);
+
+CREATE TABLE Restaurant (
+restaurant_id INT PRIMARY KEY,
+restaurant_name VARCHAR(100) NOT NULL,
+cuisine VARCHAR(50),
+city VARCHAR(50),
+rating DECIMAL(2,1)
+);
+
+INSERT INTO Restaurant VALUES
+(1, 'Barbeque Nation', 'Indian', 'Pune', 4.3),
+(2, 'Dominos Pizza', 'Italian', 'Chennai', 4.1),
+(3, 'Mainland China', 'Chinese', 'Kolkata', 4.5);
+
+-- task 8
+CREATE TABLE students (
+student_id INT PRIMARY KEY,
+student_name VARCHAR(100) NOT NULL,
+email VARCHAR(100) UNIQUE NOT NULL,
+age INT,
+city VARCHAR(50)
+);
+
+CREATE TABLE courses (
+course_id INT PRIMARY KEY,
+course_name VARCHAR(100) NOT NULL,
+duration VARCHAR(50)
+);
+
+CREATE TABLE enrollment (
+enrollment_id INT PRIMARY KEY,
+student_id INT,
+course_id INT,
+enroll_date DATE,
+FOREIGN KEY (student_id) REFERENCES students(student_id),
+FOREIGN KEY (course_id) REFERENCES courses(course_id)
+);
+
+-- task 10
+CREATE TABLE Restaurant2 (
+restaurant_id INT PRIMARY KEY,
+name VARCHAR(100) NOT NULL,
+location VARCHAR(50)
+);
+
+INSERT INTO Restaurant2 VALUES
+(1, 'Barbeque Nation', 'Mumbai'),
+(2, 'Dominos Pizza', 'Delhi'),
+(3, 'Mainland China', 'Kolkata');
+
+CREATE TABLE Orders (
+order_id INT PRIMARY KEY,
+restaurant_id INT,
+customer_name VARCHAR(100),
+amount DECIMAL(8,2),
+order_date DATE,
+FOREIGN KEY (restaurant_id) REFERENCES Restaurant(restaurant_id)
+);
+INSERT INTO Orders VALUES
+(101, 1, 'Aarav Mehta', 2500.00, '2025-09-01'),
+(102, 2, 'Priya Sharma', 800.00, '2025-09-02'),
+(103, 1, 'Rohan Kapoor', 1500.00, '2025-09-03'),
+(104, 3, 'Sneha Iyer', 2200.00, '2025-09-04'),
+(105, 2, 'Aditya Deshmukh', 1200.00, '2025-09-05');
+
+SELECT r.name AS restaurant_name, o.amount
+FROM Orders o
+JOIN Restaurant2 r ON o.restaurant_id = r.restaurant_id;
+
+SELECT o.order_id, r.name AS restaurant_name, o.customer_name, o.amount, o.order_date
+FROM Orders o
+JOIN Restaurant2 r ON o.restaurant_id = r.restaurant_id
+WHERE r.location = 'Mumbai';
+
+SELECT r.name AS restaurant_name, SUM(o.amount) AS total_sales
+FROM Orders o
+JOIN Restaurant2 r ON o.restaurant_id = r.restaurant_id
+GROUP BY r.name;
+
+SELECT r.restaurant_id, r.name AS restaurant_name, r.location
+FROM Restaurant2 r
+LEFT JOIN Orders o ON r.restaurant_id = o.restaurant_id
+WHERE o.order_id IS NULL;
+
+SELECT o.customer_name, r.name AS restaurant_name
+FROM Orders o
+JOIN Restaurant2 r ON o.restaurant_id = r.restaurant_id;
+
+SELECT r.restaurant_id, r.name AS restaurant_name, r.location, o.order_id, o.customer_name, o.amount, o.order_date
+FROM Restaurant2 r
+JOIN Orders o ON r.restaurant_id = o.restaurant_id;
+
+-- task 11
+CREATE TABLE Departments (
+dept_id INT PRIMARY KEY,
+dept_name VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Employees (
+emp_id INT PRIMARY KEY,
+emp_name VARCHAR(100) NOT NULL,
+dept_id INT,
+FOREIGN KEY (dept_id) REFERENCES Departments(dept_id)
+);
+
+
+INSERT INTO Departments VALUES
+(1, 'HR'),
+(2, 'IT'),
+(3, 'Finance'),
+(4, 'Marketing');
+
+
+INSERT INTO Employees VALUES
+(101, 'Aarav Mehta', 1),
+(102, 'Priya Sharma', 2),
+(103, 'Rohan Kapoor', 2),
+(104, 'Sneha Iyer', 3),
+(105, 'Aditya Deshmukh', NULL), 
+(106, 'Kavya Nair', NULL);      
+
+
+SELECT e.emp_id, e.emp_name, d.dept_name
+FROM Employees e
+JOIN Departments d ON e.dept_id = d.dept_id;
+
+
+
+
+
+
+
